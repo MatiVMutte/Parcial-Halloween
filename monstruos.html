@@ -3,42 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;1,100;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <title>Halloween</title>
+    <title>Formulario Monstruos</title>
 </head>
 <body>
     <header>
-        <nav class="nav-bar">
-            <div>
-                <h1>Halloween</h1>
+        <nav class="navbar" id="navbar">
+            <div class="navbar-btn">
+                <a href="index.html">Inicio</a>
+                <a href="monstruos.html">Monstruos</a>
             </div>
-            <div>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="monstruos.html">Monstruos</a></li>
-                </ul>
+            <div class="navbar-titulo">
+                <a href="index.html"><img src="/img/Halloween-font-image.svg" alt="Imagen titulo Halloween"></a>
+            </div>
+            <div class="navbar-btn">
+                <a href="#">Blog</a>
+                <a href="#">Contacto</a>
             </div>
         </nav>
-        <div>
-            <img src="img/hero.webp" alt="Imagen barra fondo">
-        </div>
     </header>
 
-    <main>
-        <h2>Formulario Monstruos</h2>
-        <section>
-            <form action="">
+    <!-- <section>
+        <div class="fondo">
+            <h2>GALERIA DE MONSTRUOS</h2>
+            <p>Accede a nuestra galeria de monstruos</p>
+        </div>
+    </section> -->
 
-            </form>
-        </section>
+    <main class="principal">
+      <div class="formulario">
+        <h2>Formulario de Contacto</h2>
+        <form>
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" class="input-text">
+          </div>
+          <div class="campo">
+            <label for="alias">Alias</label>
+            <input type="text" id="alias" name="alias" class="input-text">
+          </div>
+          <div class="campo">
+            <label for="defensa">Defensa</label>
+            <input type="checkbox" id="defensa" name="defensa" class="input-checkbox">
+          </div>
+          <div class="campo">
+            <label for="miedo">Miedo</label>
+            <input type="range" id="miedo" name="miedo" class="input-range">
+          </div>
+          <div class="campo">
+            <label for="tipo">Tipo</label>
+            <select id="tipo" name="tipo" class="input-select">
+              <option value="opcion1">Opción 1</option>
+              <option value="opcion2">Opción 2</option>
+              <option value="opcion3">Opción 3</option>
+            </select>
+          </div>
+          <div class="boton">
+            <button type="submit" class="btn-enviar">Enviar</button>
+          </div>
+        </form>
+      </div>
+      <div class="tabla-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Alias</th>
+              <th>Defensa</th>
+              <th>Miedo</th>
+              <th>Tipo</th>
+              <!-- Agrega más encabezados de columna si es necesario -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nombre 1</td>
+              <td>Alias 1</td>
+              <td>Si</td>
+              <td>70</td>
+              <td>Fuerte</td>
+              <!-- Agrega más celdas si es necesario -->
+            </tr>
+            <tr>
+              <td>Nombre 2</td>
+              <td>Alias 2</td>
+              <td>No</td>
+              <td>30</td>
+              <td>Delgado</td>
+              <!-- Agrega más celdas si es necesario -->
+            </tr>
+            <!-- Agrega más filas según la cantidad de datos -->
+          </tbody>
+        </table>
+      </div>
     </main>
+    
 
-    <footer>
-        <ul>
-            <li>Reta Mutte, Matias</li>
-            <li>1er Parcial - Bauss</li>
-        </ul>
+    <footer class="footer">
+        <a href="mailto:mativmutte@gmail.com?subject=¡Hola!"><img width="50" height="50" src="https://img.icons8.com/ios-filled/50/gmail.png" alt="gmail"/></a>
+        <a href="https://wa.link/5i3umr" target="_blank"><img width="50" height="50" src="https://img.icons8.com/ios/50/whatsapp--v1.png" alt="whatsapp--v1"/></a>
     </footer>
+    <div class="imagen-fija"></div>
+
+    <script>
+        window.onscroll = function() {
+          var navbar = document.getElementById('navbar');
+          var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+          // Verificar si el usuario ha hecho scroll hacia abajo
+          if (scrollPosition > 50) { // Puedes ajustar este valor según la cantidad de scroll deseada
+            navbar.classList.add('fixed');
+          } else {
+            navbar.classList.remove('fixed');
+          }
+        };
+      </script>
 </body>
 </html>
