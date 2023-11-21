@@ -1,6 +1,5 @@
 import { cargarDatosFormulario, cargarTabla, eliminarDatoServidor, modificarDatoServidor } from './funcionesABM.js';
 import { insertarJson, manejarFormulario } from './funciones.js';
-import { Monstruo } from "./models/monstruos.js";
 
 let idFila = -1;
 
