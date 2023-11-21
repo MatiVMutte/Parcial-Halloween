@@ -1,7 +1,9 @@
+import { Monstruo } from "./models/monstruos.js";
+
 // Función para generar filas HTML a partir de datos
 export function generarFilas(datos) {
     return datos.map(dato => `
-      <tr class="tr" data-nombre="${dato.nombre}" data-alias="${dato.alias}" data-defensa="${dato.defensa}" data-miedo="${dato.miedo}" data-tipo="${dato.tipo}">
+      <tr class="tr" data-id="${dato.id}" data-nombre="${dato.nombre}" data-alias="${dato.alias}" data-defensa="${dato.defensa}" data-miedo="${dato.miedo}" data-tipo="${dato.tipo}">
         <td>${dato.nombre}</td>
         <td>${dato.alias}</td>
         <td>${dato.defensa}</td>
@@ -34,13 +36,15 @@ export function activarSpinner(booleano) {
 }
   
 // Función para realizar la solicitud POST y manejar la inserción de datos
-export function insertarJson(nuevoDato) {
+export async function insertarJson(nuevoDato) {
+  let monstruo = await new Monstruo(nuevoDato.nombre, nuevoDato.alias, nuevoDato.defensa, nuevoDato.miedo, nuevoDato.tipo);
+
     fetch("http://localhost:3000/monstruos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
       },
-      body: JSON.stringify(nuevoDato),
+      body: JSON.stringify(monstruo),
     })
       .then((res) => {
         if (!res.ok) {
@@ -50,6 +54,7 @@ export function insertarJson(nuevoDato) {
       })
       .then((data) => {
         if (data) {
+          console.log(data);
           const filasGeneradas = generarFilas(data);
           insertarFilas(filasGeneradas);
         } else {
@@ -65,7 +70,7 @@ export function insertarJson(nuevoDato) {
 }
   
 // Función para manejar el evento submit del formulario
-export function manejarFormulario(event) {
+export function manejarFormulario(event, callback, idFila) {
     event.preventDefault(); // Prevenir el envío predeterminado del formulario
   
     const nombre = document.getElementById('nombre').value;
@@ -73,15 +78,12 @@ export function manejarFormulario(event) {
     const defensa = document.querySelector('input[name="defensa"]:checked').value;
     const miedo = document.getElementById('miedo').value;
     const tipo = document.getElementById('tipo').value;
-  
-    const nuevoDato = {
-      nombre,
-      alias,
-      defensa,
-      miedo,
-      tipo
-    };
+    const id = idFila;
+
+    const monstruo = {
+      id, nombre, alias, defensa, miedo, tipo
+    }
   
     activarSpinner(true);
-    insertarJson(nuevoDato);
+    callback(monstruo);
 }

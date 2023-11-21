@@ -1,32 +1,28 @@
-import { cargarTabla } from './funcionesABM.js';
-import { manejarFormulario } from './funciones.js';
+import { cargarDatosFormulario, cargarTabla, eliminarDatoServidor, modificarDatoServidor } from './funcionesABM.js';
+import { insertarJson, manejarFormulario } from './funciones.js';
+import { Monstruo } from "./models/monstruos.js";
 
-// Manejar el evento submit del formulario
-const form = document.querySelector('form');
-form.addEventListener('submit', manejarFormulario);
+let idFila = -1;
 
-// Al cargar la pagina
 document.addEventListener('DOMContentLoaded', async (e) => {
   await cargarTabla();
   
   let tbody = document.querySelector('table tbody');
   let filas = tbody.querySelectorAll('tr');
-  
+  filas.forEach(fila => {
+    fila.addEventListener("click", (e) => {
+      cargarDatosFormulario(fila);
+      idFila = fila.getAttribute('data-id');
+    });
+  });
   
 });
 
-// Obtener
-// fila.addEventListener('click', (e) => {
-//   console.log(e);
-//   cargarDatosFormulario(fila);
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => manejarFormulario(e, insertarJson, idFila));
 
-//   // const botonModificar = document.getElementById('botonModificar');
-//   // botonModificar.addEventListener('click', () => {
-//   //   modificarDatoServidor(fila);
-//   // });
+const btnModificar = document.querySelector('.btn-modificar');
+btnModificar.addEventListener("click", (e) => manejarFormulario(e, modificarDatoServidor, idFila));
 
-//   // const botonEliminar = document.getElementById('botonEliminar');
-//   // botonEliminar.addEventListener('click', () => {
-//   //   eliminarDatoServidor(fila);
-//   // });
-// });
+const btnEliminar = document.querySelector('.btn-eliminar');
+btnEliminar.addEventListener("click", (e) => manejarFormulario(e, eliminarDatoServidor, idFila));

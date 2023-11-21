@@ -145,6 +145,7 @@ nav  div  a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 140vh;
 }
 
 .principal-monstruos {
@@ -264,12 +265,23 @@ input[type="text"]:focus {
 }
 
 .formulario .boton {
-    width: 100%;
+    display: flex;
 }
 
 .boton button {
-    width: 100%;
+    background-color: #FB9E25;
+    flex-grow: 1;
+    border-radius: 12px;
+    max-width: 300px;
     height: 5rem;
+    margin: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.boton button:hover {
+    background-color: #c47917;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.596);
+    transform: scale(1.1);
 }
 
 .table {
@@ -289,6 +301,10 @@ input[type="text"]:focus {
 .table th {
     background-color: #FB9E25;
     color: black;
+}
+
+.tbody tr:hover {
+    background-color: #880D00;
 }
 
 .tabla-responsive {

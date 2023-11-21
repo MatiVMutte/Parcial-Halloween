@@ -1,84 +1,36 @@
 {
   "monstruos": [
     {
-      "id": 1,
-      "nombre": "Guri",
-      "alias": "Se",
-      "defensa": "Estaca",
-      "miedo": 95,
-      "tipo": "esqueleto"
-    },
-    {
       "id": 2,
       "nombre": "Matias",
       "alias": "SO",
-      "defensa": "Estaca",
+      "defensa": "estaca",
       "miedo": 40,
       "tipo": "esqueleto"
     },
     {
-      "id": 3,
-      "nombre": "Lauty",
-      "alias": "QU",
-      "defensa": "Estaca",
-      "miedo": 70,
-      "tipo": "esqueleto"
-    },
-    {
-      "nombre": "Buenas tardees",
-      "alias": "ASDASDAD",
-      "defensa": "crucifico",
-      "miedo": "13",
-      "tipo": "zombie",
-      "id": 4
-    },
-    {
+      "id": 4,
       "nombre": "Matias Valentin Mutte",
-      "alias": "Gurise",
-      "defensa": "pocion",
-      "miedo": "15",
-      "tipo": "hombrelobo",
-      "id": 5
-    },
-    {
-      "nombre": "Lauty",
-      "alias": "Mons",
-      "defensa": "estaca",
-      "miedo": "0",
-      "tipo": "bruja",
-      "id": 6
-    },
-    {
-      "nombre": "GURISE",
-      "alias": "AAAAAAA",
+      "alias": "Buenas",
       "defensa": "plata",
-      "miedo": "96",
-      "tipo": "fantasma",
-      "id": 7
+      "miedo": "100",
+      "tipo": "vampiro"
     },
     {
-      "nombre": "SERA",
-      "alias": "DSA",
-      "defensa": "pocion",
-      "miedo": "15",
-      "tipo": "esqueleto",
-      "id": 8
+      "id": 5,
+      "nombre": "AAAAAA",
+      "alias": "Aguslandia",
+      "defensa": "crucifico",
+      "miedo": "70",
+      "tipo": "fantasma"
     },
     {
-      "nombre": "JAJAJAJJ",
-      "alias": "JAJAJAJA",
-      "defensa": "estaca",
-      "miedo": "80",
-      "tipo": "vampiro",
-      "id": 9
-    },
-    {
-      "nombre": "JAJAJAJJ",
-      "alias": "aaaaaaaaaaaaaaaaaaaaaaa",
-      "defensa": "pocion",
-      "miedo": "50",
-      "tipo": "vampiro",
-      "id": 10
+      "id": 6,
+      "nombre": "Lauty",
+      "alias": "Monse",
+      "defensa": "crucifico",
+      "miedo": "22",
+      "tipo": "vampiro"
     }
   ]
 }

@@ -1,4 +1,5 @@
 import { activarSpinner, insertarFilas, generarFilas } from './funciones.js';
+import { Monstruo } from './models/monstruos.js';
 
 export function cargarDatosFormulario(fila) {
     const nombre = fila.getAttribute('data-nombre');
@@ -6,63 +7,87 @@ export function cargarDatosFormulario(fila) {
     const defensa = fila.getAttribute('data-defensa');
     const miedo = fila.getAttribute('data-miedo');
     const tipo = fila.getAttribute('data-tipo');
-  
+
     document.getElementById('nombre').value = nombre;
     document.getElementById('alias').value = alias;
     document.querySelector('input[name="defensa"][value="' + defensa + '"]').checked = true;
     document.getElementById('miedo').value = miedo;
     document.getElementById('tipo').value = tipo;
 }
+
+export async function obtenerMonstruosServidor() {
+  try {
+    const res = await fetch("http://localhost:3000/monstruos");
+
+    if(!res.ok) {
+      throw Error(res);
+    }
+
+    return await res.json();
+  } catch(res) {
+    // console.error(`Error ${res.status}: ${res.statusText}`);
+  }
+}
+
+export async function obtenerUltimoID() {
+  let ultimoID = -1;
   
-// function modificarDatoServidor(fila) {
-//     const datosModificados = {
-//       nombre: document.getElementById('nombre').value,
-//       alias: document.getElementById('alias').value,
-//       defensa: document.querySelector('input[name="defensa"]:checked').value,
-//       miedo: document.getElementById('miedo').value,
-//       tipo: document.getElementById('tipo').value
-//     };
+  const datos = await obtenerMonstruosServidor();
+
+  datos.forEach(element => {
+    if(element.id > ultimoID) {
+      ultimoID = element.id;
+    }
+  });
+  return ultimoID;
+}
   
-//     fetch(`http://localhost:3000/monstruos/${fila.getAttribute('data-id')}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(datosModificados)
-//     })
-//     .then(response => {
-//       if (!response.ok) {
-//         throw new Error('Error al modificar el dato');
-//       }
-//       return response.json();
-//     })
-//     .then(data => {
-//       console.log('Dato modificado:', data);
-//       // Aquí podrías realizar acciones adicionales si es necesario
-//     })
-//     .catch(error => {
-//       console.error('Error:', error);
-//     });
-// }
+export async function modificarDatoServidor(datosModificados) {
   
-// function eliminarDatoServidor(fila) {
-//     fetch(`http://localhost:3000/monstruos/${fila.getAttribute('data-id')}`, {
-//       method: 'DELETE'
-//     })
-//     .then(response => {
-//       if (!response.ok) {
-//         throw new Error('Error al eliminar el dato');
-//       }
-//       return response.json();
-//     })
-//     .then(() => {
-//       console.log('Dato eliminado');
-//       // Aquí podrías realizar acciones adicionales si es necesario
-//     })
-//     .catch(error => {
-//       console.error('Error:', error);
-//     });
-// }
+  let monstruo = await new Monstruo(datosModificados.nombre, datosModificados.alias, datosModificados.defensa, datosModificados.miedo, datosModificados.tipo);
+  monstruo.id = datosModificados.id;
+
+    fetch(`http://localhost:3000/monstruos/${monstruo.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(monstruo)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al modificar el dato');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Dato modificado:', data);
+      // Aquí podrías realizar acciones adicionales si es necesario
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+  
+export async function eliminarDatoServidor(datosModificados) {
+
+    fetch(`http://localhost:3000/monstruos/${datosModificados.id}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al eliminar el dato');
+      }
+      return response.json();
+    })
+    .then(() => {
+      console.log('Dato eliminado');
+      // Aquí podrías realizar acciones adicionales si es necesario
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
 export async function cargarTabla() {
   console.log("FUNCIONA");
