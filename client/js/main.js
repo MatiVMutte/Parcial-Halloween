@@ -6,6 +6,8 @@ let idFila = -1;
 document.addEventListener('DOMContentLoaded', async (e) => {
   await cargarTabla();
   
+  calcularPromedioMiedo();
+
   let tbody = document.querySelector('table tbody');
   let filas = tbody.querySelectorAll('tr');
   filas.forEach(fila => {

@@ -92,6 +92,40 @@
         <div id="spinner" class="spinner"></div>
       </div>
       <!-- FIN -->
+      <div class="caja-filtrado">
+        <div class="caja">
+          <label for="filtrar">Filtrar tipos</label>
+          <select id="filtrar">
+            <!-- SELECT POR JS -->
+          </select>
+        </div>
+        <div class="caja">
+          <label for="promedio">Promedio miedo</label>
+          <input id="promedio" type="text" disabled>
+        </div>
+      </div>
+      <div class="caja-columnas">
+        <div class="columnas">
+          <input type="checkbox" name="nombre" id="nombreC" checked>
+          <label for="nombreC">Nombre</label>
+        </div>
+        <div class="columnas">
+          <input type="checkbox" name="alias" id="aliasC" checked>
+          <label for="aliasC">Alias</label>
+        </div>
+        <div class="columnas">
+          <input type="checkbox" name="defensa" id="defensaC" checked>
+          <label for="defensaC">Defensa</label>
+        </div>
+        <div class="columnas">
+          <input type="checkbox" name="miedo" id="miedoC" checked>
+          <label for="miedoC">Miedo</label>
+        </div>
+        <div class="columnas">
+          <input type="checkbox" name="tipo" id="tipoC" checked>
+          <label for="tipoC">Tipo</label>
+        </div>
+      </div>
       <div class="tabla-responsive">
         <table class="table" id="tabla-monstruos">
           <thead>
@@ -119,6 +153,11 @@
 
     <script src="js/main.js" type="module"></script>
     <script src="js/cargarSelect.js"></script>
+    <script src="js/cargarSelectFiltrado.js"></script>
+    <script src="js/filtrarTabla.js"></script>
+    <script src="js/promedioMiedo.js"></script>
+    <script src="js/cargarColumnasXCheckBox.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- <script src="js/cargarTabla.js"></script> -->
     <script>
         window.onscroll = function() {

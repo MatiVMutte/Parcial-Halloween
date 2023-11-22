@@ -9,14 +9,6 @@
       "tipo": "esqueleto"
     },
     {
-      "id": 4,
-      "nombre": "Matias Valentin Mutte",
-      "alias": "Buenas",
-      "defensa": "plata",
-      "miedo": "100",
-      "tipo": "vampiro"
-    },
-    {
       "id": 5,
       "nombre": "AAAAAA",
       "alias": "Aguslandia",
@@ -25,12 +17,20 @@
       "tipo": "fantasma"
     },
     {
-      "id": 6,
-      "nombre": "Lauty",
-      "alias": "Monse",
-      "defensa": "crucifico",
-      "miedo": "22",
-      "tipo": "vampiro"
+      "id": 7,
+      "nombre": "Matias",
+      "alias": "SO",
+      "defensa": "estaca",
+      "miedo": "40",
+      "tipo": "esqueleto"
+    },
+    {
+      "id": 9,
+      "nombre": "Matias Valentin Mutte",
+      "alias": "SO",
+      "defensa": "plata",
+      "miedo": "100",
+      "tipo": "bruja"
     }
   ]
 }

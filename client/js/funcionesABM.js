@@ -25,7 +25,7 @@ export async function obtenerMonstruosServidor() {
 
     return await res.json();
   } catch(res) {
-    // console.error(`Error ${res.status}: ${res.statusText}`);
+    console.error(`Error ${res.status}: ${res.statusText}`);
   }
 }
 
@@ -66,27 +66,42 @@ export async function modificarDatoServidor(datosModificados) {
     })
     .catch(error => {
       console.error('Error:', error);
+    })
+    .finally(()=>{
+      activarSpinner(false);
     });
 }
   
-export async function eliminarDatoServidor(datosModificados) {
+// export async function eliminarDatoServidor(datosModificados) {
 
-    fetch(`http://localhost:3000/monstruos/${datosModificados.id}`, {
-      method: 'DELETE'
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error al eliminar el dato');
-      }
-      return response.json();
-    })
-    .then(() => {
-      console.log('Dato eliminado');
-      // Aquí podrías realizar acciones adicionales si es necesario
-    })
-    .catch(error => {
+//     fetch(`http://localhost:3000/monstruos/${datosModificados.id}`, {
+//       method: 'DELETE'
+//     })
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error('Error al eliminar el dato');
+//       }
+//       return response.json();
+//     })
+//     .then(() => {
+//       console.log('Dato eliminado');
+//       // Aquí podrías realizar acciones adicionales si es necesario
+//     })
+//     .catch(error => {
+//       console.error('Error:', error);
+//     });
+// }
+
+export async function eliminarDatoServidor(datosModificados) {
+  try {
+    const response = await axios.delete(`http://localhost:3000/monstruos/${datosModificados.id}`);
+    console.log('Dato eliminado');
+    // return response.json();
+  } catch (error) {
       console.error('Error:', error);
-    });
+  } finally {
+    activarSpinner(false);
+  }
 }
 
 export async function cargarTabla() {
